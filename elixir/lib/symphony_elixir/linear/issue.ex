@@ -20,6 +20,12 @@ defmodule SymphonyElixir.Linear.Issue do
     updated_at: nil
   ]
 
+  @type blocker_ref :: %{
+          id: String.t() | nil,
+          identifier: String.t() | nil,
+          state: String.t() | nil
+        }
+
   @type t :: %__MODULE__{
           id: String.t() | nil,
           identifier: String.t() | nil,
@@ -30,6 +36,7 @@ defmodule SymphonyElixir.Linear.Issue do
           branch_name: String.t() | nil,
           url: String.t() | nil,
           assignee_id: String.t() | nil,
+          blocked_by: [blocker_ref()],
           labels: [String.t()],
           assigned_to_worker: boolean(),
           created_at: DateTime.t() | nil,
